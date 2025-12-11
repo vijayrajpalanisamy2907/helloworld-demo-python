@@ -34,96 +34,11 @@ jobs:
 
          run: docker push ${{ vars.DOCKERHUB_USERNAME }}/helloworld-demo-python:v4
 
-       Palanisamy, Deepika has temporarily joined the chat.
-
- 
-Arul, Dilip Nelson A has temporarily joined the chat.
-
- 
-Kumar, Bhavya has temporarily joined the chat.
-
- 
-Murugan, Nimaleshwaran has temporarily joined the chat.
-
- 
-Hi, Good Morning 
-Santhosh NC Tejaswini-SkillUpRight 
-Could you please provide access to the recordings? 
- 
-Team. we will start the session by 9:45AM
- 
-Kumar, Bhavya (External)
-Hi, Good Morning   Santhosh NC Tejaswini-SkillUpRight   Could you please provide access to the recordings?
-Recording will be shared to L&D team on last day of training, as we are not allowed to share anything with participants directly.
- 
-Hi Santhosh, All, Good Morning.
-Just joined
- 
-https://github.com/dockersamples/helloworld-demo-python
- 
-Raise a PR - by updating the name in app.py
- 
-FROM python:3.14.2-alpine3.22
-
-LABEL version="1.0"
-
-MAINTAINER SanthoshNC
-
-ENV MY_APP="hello-world-python"
-
-RUN mkdir /app
-
-WORKDIR /app
-
-COPY . /app
-
-EXPOSE 8080
-
-CMD ["python3", "app.py"]
- 
-Dockerfile
- 
-sudo docker build -t username/imagename
- 
-docker push username/imagename
- 
-name: Docker CI Pipeline
-
-run-name: ${{ github.actor }} is running out Docker CI Pipeline 🚀
-
-on: [push]
-
-jobs:
-
-  hello-world-job:
-
-    runs-on: ubuntu-latest
-
-    steps:
-
-       - name: Clone the code
-
-         uses: actions/checkout@v6
-
-       - name: Build the image
-
-         run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/helloworld-demo-python:v1 .
-
-       - name: Login to Docker Hub
-
-         uses: docker/login-action@v3
-
-         with:
-
-           username: ${{ vars.DOCKERHUB_USERNAME }}
-           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-       - name: Push the image
-         run: docker push ${{ vars.DOCKERHUB_USERNAME }}/helloworld-demo-python:v1
- 
        - name: Run the container
-         run: docker run --name helloworld-demo-python -itd -p 8080:8080 ${{ vars.DOCKERHUB_USERNAME }}/helloworld-demo-python:v1
+         run: docker run --name helloworld-demo-python -itd -p 8080:8080 ${{ vars.DOCKERHUB_USERNAME }}/helloworld-demo-python:v4
 
+       - name: View the container
+         run: docker ps
        - name: View the container
          run: docker ps
  
