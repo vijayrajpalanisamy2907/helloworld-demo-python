@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-demo-python
+  labels:
+    app: helloworld-demo-python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld-demo-python
+  template:
+    metadata:
+      labels:
+        app: helloworld-demo-python
+    spec:
+      containers:
+      - name: helloworld-demo-python
+        image: ${{ vars.DOCKERHUB_USERNAME }}/helloworld-github-python:v1
+        ports:
+        - containerPort: 8080
