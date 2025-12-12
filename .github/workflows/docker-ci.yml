@@ -28,7 +28,27 @@ jobs:
        - name: Run the container
          run: docker run --name helloworld-demo-python -itd -p 8080:8080 ${{ vars.DOCKERHUB_USERNAME }}/helloworld-demo-python:v4
 
-       - name: View the container
+       - name: View the container 
          run: docker ps
  
+       k8s-implementation:
+    needs: docker-build-push
+    runs-on: ubuntu-latest
+    steps:
+       - name: Clone the code
+         uses: actions/checkout@v6  
  
+       - name: Start minikube
+         uses: medyagh/setup-minikube@latest
+       - name: Try the cluster!
+         run: kubectl get pods -A
+ 
+       - name: Create Deployment and Service
+         run: |
+            kubectl apply -f k8s/deployment.yaml
+            kubectl apply -f k8s/service.yaml
+            kubectl wait --for=condition=ready pod -l app=hello-world-python
+       - name: View Deployment and Service
+         run: |
+            kubectl get deployments
+            kubectl get service
