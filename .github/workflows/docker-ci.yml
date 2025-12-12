@@ -44,8 +44,8 @@ jobs:
 
       - name: Create Deployment and Service
         run: |
-          kubectl apply -f k8s/deployment.yaml
-          kubectl apply -f k8s/service.yaml
+          kubectl apply -f K8s/deployment.yaml
+          kubectl apply -f K8s/services.yaml
           kubectl wait --for=condition=ready pod -l app=hello-world-python
 
       - name: View Deployment and Service
