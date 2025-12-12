@@ -67,7 +67,7 @@ jobs:
  
             kubectl apply -f service.yaml
  
-            kubectl wait --for=condition=ready pod -l app=helloworld-demo-python
+            kubectl wait --for=condition=ready pod -l app=hello-world-python
  
        - name: View Deployment and Service
  
@@ -76,3 +76,10 @@ jobs:
             kubectl get deployments
  
             kubectl get service
+
+       - name: Test service URLs
+         run: |
+          minikube service list
+          minikube service hello-world-service --url
+          echo "------------------opening the service------------------"
+          curl $(minikube service hello-world-service --url)
