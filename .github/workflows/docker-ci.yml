@@ -31,7 +31,5 @@ jobs:
 
        - name: View the container
          run: docker ps
-       - name: View the container
-         run: docker ps
  
  
