@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: helloworld-demo-python
   labels:
-    app: nginx
+    app: helloworld-demo-python
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: helloworld-demo-python
   template:
     metadata:
       labels:
-        app: nginx
+        app: helloworld-demo-python
     spec:
       containers:
-      - name: nginx
-        image: vijayrajpalanisamy/helloworld-demo-python:v4
+      - name: helloworld-demo-python
+        image: ${{ vars.DOCKERHUB_USERNAME }}/helloworld-github-python:v1
         ports:
-        - containerPort: 80
+        - containerPort: 8080
