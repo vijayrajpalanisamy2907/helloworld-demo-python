@@ -30,8 +30,9 @@ jobs:
 
        - name: View the container 
          run: docker ps
- 
-       k8s-implementation:
+
+    
+ k8s-implementation:
     needs: docker-build-push
     runs-on: ubuntu-latest
     steps:
