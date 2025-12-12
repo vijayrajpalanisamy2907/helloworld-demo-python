@@ -10,7 +10,6 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-
        - name: Clone the code
          uses: actions/checkout@v6
        - name: Build the image
