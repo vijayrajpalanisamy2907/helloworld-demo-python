@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.14.2
+        image: vijayrajpalanisamy/helloworld-demo-python:v4
         ports:
         - containerPort: 80
